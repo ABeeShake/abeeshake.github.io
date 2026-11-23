@@ -5,6 +5,7 @@ A plain HTML and CSS site with no build step, ready for GitHub Pages.
 ```
 index.html                         Home
 research.html                      Research
+music.html                         Music
 teaching.html                      Teaching
 projects/index.html                Projects
 projects/color-code-lab/index.html Color code lab (interactive companion)

@@ -78,3 +78,18 @@ main { padding: clamp(32px, 6vw, 64px) 0; }
   .portrait { width: 140px; height: 140px; }
   .news li { grid-template-columns: minmax(0, 1fr); gap: 0; }
 }
+
+/* Primary button (CV) */
+.links a.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.links a.primary:hover { filter: brightness(1.1); }
+.links a:hover { background: var(--accent-soft); }
+.links a.primary:hover { background: var(--accent); }
+
+/* Music page */
+:root { --warm: #C8601B; --warm-soft: #F8DCCB; }
+@media (prefers-color-scheme: dark) { :root { --warm: #F29A55; --warm-soft: #5C2E15; } }
+.tag.warm { color: var(--warm); background: var(--warm-soft); }
+.embed { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 12px 0 6px; }
+.embed iframe { display: block; width: 100%; border: 0; }
+.embed.placeholder { min-height: 120px; display: flex; align-items: center; justify-content: center; color: var(--soft); font-size: 15px; padding: 20px; text-align: center; border-style: dashed; }
+.section-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
