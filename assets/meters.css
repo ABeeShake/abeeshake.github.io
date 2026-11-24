@@ -1,0 +1,70 @@
+/* MiniMeters-style player. Always dark, like a hardware rack, whatever the site theme. */
+.mm {
+  --mm-bg: #0E1018; --mm-panel: #141826; --mm-line: #232838; --mm-label: #6E7590;
+  --mm-text: #C9CDDA; --mm-ind: #8E91FF; --mm-org: #F29A55;
+  background: var(--mm-panel); color: var(--mm-text);
+  border: 1px solid var(--mm-line); border-radius: 16px; padding: 14px;
+  margin: 16px 0 8px; font-variant-numeric: tabular-nums;
+}
+.mm audio { display: none; }
+.mm button {
+  font: 600 12px/1 Inter, system-ui, sans-serif; color: var(--mm-text); background: var(--mm-bg);
+  border: 1px solid var(--mm-line); border-radius: 6px; padding: 6px 9px; cursor: pointer;
+}
+.mm button:hover { border-color: var(--mm-ind); }
+.mm button:focus-visible, .mm canvas:focus-visible { outline: 2px solid var(--mm-ind); outline-offset: 2px; }
+.mm button[aria-pressed="true"] { background: var(--mm-ind); border-color: var(--mm-ind); color: var(--mm-bg); }
+
+.mm-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.mm .mm-play {
+  width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 15px;
+  background: var(--mm-ind); border-color: var(--mm-ind); color: var(--mm-bg); flex: none;
+}
+.mm.is-playing .mm-play { background: var(--mm-org); border-color: var(--mm-org); }
+.mm-title { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.mm-title strong { font-family: "Space Grotesk", Inter, sans-serif; font-size: 17px; color: #ECEAF3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mm-title span { font-size: 13px; color: var(--mm-label); }
+.mm-time { font-size: 13px; color: var(--mm-label); }
+.mm-seg { display: flex; }
+.mm-seg button { border-radius: 0; }
+.mm-seg button:first-child { border-radius: 6px 0 0 6px; }
+.mm-seg button:last-child { border-radius: 0 6px 6px 0; border-left: 0; }
+
+.mm canvas { display: block; width: 100%; background: var(--mm-bg); border-radius: 8px; }
+.mm-wave { height: 72px; cursor: pointer; touch-action: none; }
+.mm.is-mic .mm-wave { opacity: 0.35; }
+
+.mm-grid {
+  display: grid; gap: 10px; margin-top: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas: "spec spec stereo loud" "sg sg osc osc";
+}
+.mm-mod { background: var(--mm-bg); border: 1px solid var(--mm-line); border-radius: 10px; padding: 8px; display: flex; flex-direction: column; min-width: 0; }
+.mm-mod header { display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 26px; margin-bottom: 6px; }
+.mm-label { font: 700 11px/1 Inter, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mm-label); }
+.mm-ctl { display: flex; gap: 4px; }
+.mm-ctl button { padding: 4px 7px; font-size: 11px; }
+.mm-mod canvas { height: 190px; flex: 1; }
+.mm-spectrum { grid-area: spec; }
+.mm-stereo { grid-area: stereo; }
+.mm-loud { grid-area: loud; }
+.mm-sg { grid-area: sg; }
+.mm-osc { grid-area: osc; }
+.mm-sg canvas, .mm-osc canvas { height: 150px; }
+.mm-loud canvas { height: 120px; flex: none; }
+.mm-read { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; margin: 8px 0 0; }
+.mm-read div { display: flex; flex-direction: column; }
+.mm-read dt { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mm-label); }
+.mm-read dd { margin: 0; font: 700 15px/1.2 "Space Grotesk", Inter, sans-serif; color: #ECEAF3; }
+.mm-status { margin: 8px 2px 0; font-size: 13px; color: var(--mm-label); min-height: 1em; }
+.mm-status:empty { display: none; }
+
+@media (max-width: 760px) {
+  .mm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "spec spec" "stereo loud" "sg sg" "osc osc"; }
+}
+@media (max-width: 460px) {
+  .mm { padding: 10px; }
+  .mm-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "spec" "stereo" "loud" "sg" "osc"; }
+  .mm-mod canvas { height: 160px; }
+}
+.mm-read dd small { font: 600 10px Inter, sans-serif; color: var(--mm-label); }

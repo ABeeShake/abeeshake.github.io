@@ -7,6 +7,8 @@
 <meta name="description" content="DJ mixes and original productions by Abhishek Devarajan.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/meters.css">
+<script src="assets/meters.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -33,6 +35,26 @@
       <a href="https://open.spotify.com/artist/[id]">Spotify</a>
       <a href="https://www.instagram.com/[username]/">Instagram</a>
     </div>
+
+
+    <h2>Featured track</h2>
+    <p>Press play and watch the track through six meters modelled on the metering plugins producers use while mixing. Click the waveform to jump around, switch the spectrum to mid/side to see what sits in the stereo field, or press Mic to visualize your own room.</p>
+    <div class="meters"
+         data-src="assets/audio/2on-rmx.mp3"
+         data-peaks="assets/audio/2on-rmx.peaks.json"
+         data-title="2 On (10cust n alirq rmx)"
+         data-artist="Tinashe · remix by 10cust &amp; alirq"></div>
+    <details class="mm-help">
+      <summary>What the meters show</summary>
+      <ul class="entries">
+        <li><strong>Waveform:</strong> the whole track. Colour shows where the energy sits: indigo for bass, orange for mids, cream for highs.</li>
+        <li><strong>Spectrum:</strong> loudness at each frequency right now, tilted 4.5 dB per octave so a balanced mix looks roughly flat. M/S splits it into what both speakers share (mid) and what differs between them (side).</li>
+        <li><strong>Stereometer:</strong> each dot plots the left sample against the right. A vertical line is mono; a wide cloud is wide stereo. The bar below is the correlation, near +1 for mono-safe audio and negative when channels cancel.</li>
+        <li><strong>Peak / LUFS:</strong> sample peaks per channel, plus loudness measured the way streaming services do (ITU-R BS.1770). Momentary averages 0.4 s, short-term 3 s, integrated the whole listen.</li>
+        <li><strong>Spectrogram:</strong> the spectrum scrolling through time, so drops, risers and filter sweeps leave visible shapes.</li>
+        <li><strong>Oscilloscope:</strong> the raw waveform over about 50 milliseconds.</li>
+      </ul>
+    </details>
 
     <h2>Mixes</h2>
     <ul class="entries">

@@ -93,3 +93,8 @@ main { padding: clamp(32px, 6vw, 64px) 0; }
 .embed iframe { display: block; width: 100%; border: 0; }
 .embed.placeholder { min-height: 120px; display: flex; align-items: center; justify-content: center; color: var(--soft); font-size: 15px; padding: 20px; text-align: center; border-style: dashed; }
 .section-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+/* Notes under the music player */
+.mm-help { margin: 8px 0 0; }
+.mm-help summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.mm-help li { padding: 10px 0; color: var(--soft); }

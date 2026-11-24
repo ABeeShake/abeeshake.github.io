@@ -27,3 +27,24 @@ Search every `.html` file for square brackets, `[`, and replace each placeholder
 ## Adding a project
 
 Create a folder under `projects/` containing an `index.html`, then add a card for it in `projects/index.html`.
+
+## Music visualizer
+
+`music.html` uses a MiniMeters-style player (`assets/meters.js`, `assets/meters.css`, `assets/meters-worklet.js`) with a waveform overview, spectrum analyzer, stereometer, peak/LUFS meter, spectrogram and oscilloscope.
+
+To add a track, run this from the site folder (needs ffmpeg and numpy):
+
+```
+python3 tools/prepare_track.py ~/Music/my-track.wav my-track
+```
+
+It writes `assets/audio/my-track.mp3` and `assets/audio/my-track.peaks.json`. Then add a player anywhere on a page that loads `meters.css` and `meters.js`:
+
+```html
+<div class="meters" data-src="assets/audio/my-track.mp3" data-peaks="assets/audio/my-track.peaks.json"
+     data-title="Track title" data-artist="Artist"></div>
+```
+
+Audio has to be hosted on this site: browsers don't let a page analyze SoundCloud or Mixcloud audio. GitHub rejects files over 100 MB, which is roughly 40 minutes at 320 kbps, so encode long mixes at a lower bitrate or host them elsewhere.
+
+To test locally, serve the folder instead of opening the file directly: `python3 -m http.server`, then visit http://localhost:8000/music.html. (Python's server can't seek within a track; GitHub Pages can.)
